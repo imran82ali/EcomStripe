@@ -1,14 +1,17 @@
+import { defineType,defineField } from "sanity";
+
 import { title } from "process";
 
-export const category ={
+export const category =defineType( {
     name: "category",
     title: "Category",
     type : "document",
     fields : [
-        {
-        name : "name",
-        title : "category name",
-        type : "string"
-    }
+        defineField(
+            {
+                name : "name",
+                title : "category name",
+                type : "string"
+            })
     ]
-}
+} )

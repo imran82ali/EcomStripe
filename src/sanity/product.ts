@@ -1,3 +1,5 @@
+import { category } from "./category"
+
 export const product = {
     name: 'product',
     type: 'document',
@@ -14,9 +16,23 @@ export const product = {
             type : 'string'
         },
         {
+            name: 'Price',
+            title: 'Product Price',
+            type : 'number'
+        },
+        {
             name: 'pimage',
             title: 'Product image',
             type : 'image'
-        }
+        },
+        {
+            name: 'category',
+            title: 'Product Category',
+            type : 'reference',
+            to:[{
+                type:"category"
+            }]
+        },
+        
     ]
 }
