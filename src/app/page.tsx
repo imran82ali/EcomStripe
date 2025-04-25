@@ -1,9 +1,12 @@
+
+
 import Image from "next/image";
 import {Image as Iimage} from 'sanity';
 
 import {client} from "@/sanity/lib/client"
 import { Interface } from "readline";
 import { urlForImage } from "@/sanity/lib/image";
+import ProductCard from "./ProductCard";
 
 export const getProductData = async() =>{
   const result = await client.fetch(`*[_type=='product']{
@@ -26,7 +29,7 @@ interface Iproduct {
   _id : string
   description: string;
   pimage : Iimage,
-  price:number,
+  Price:number,
   cateory : {
     name:string
   }
@@ -38,13 +41,10 @@ export default async function Home() {
   console.log(data);
 
   return (
-    <div className="grid grid-cols-2 justify-center gap-x-10 gap-y-10 mt-10 ml-10">
+    <div className="flex justify-center gap-x-10 mt-10">
     {data.map((item)=>(
       <div >
-        <Image 
-        width={200} height={300}
-        src={urlForImage(item.pimage).url()} alt="product" />
-        <h1> {item.name} </h1>
+        <ProductCard item={item }/> 
       </div>
     ))}
 
